@@ -4,7 +4,6 @@ import DemoPage from "./pages/DemoPage";
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token");
-
   return (
     <Router>
       <Routes>

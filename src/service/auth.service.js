@@ -3,7 +3,7 @@ import api from '../api/axiosConfig';
 export const login = async (username, password) => {
   console.log(username, password);
   try {
-    const response = await api.post(`/auth/login`, {
+    const response = await api.post(`http://localhost:8080/auth/login`, {
       username,
       password,
     });

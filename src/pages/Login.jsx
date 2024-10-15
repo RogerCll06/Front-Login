@@ -1,6 +1,6 @@
 import  { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../service/auth.service';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -11,11 +11,8 @@ const Login = () => {
         e.preventDefault();
         console.log({ username, password }); // Muestra los datos en la consola
         try {
-            const response = await axios.post('http://localhost:8080/auth/login', {
-                username,
-                password,
-            });
-            localStorage.setItem('token', response.data.token);
+            const response = await login(username, password)
+            console.log({ response });
             navigate('/secure/demo');
         } catch (error) {
             console.error('Error al iniciar sesión', error);
@@ -23,7 +20,6 @@ const Login = () => {
         }
     };
     
-
     return (
         <div>
             <h2>Iniciar Sesión</h2>
